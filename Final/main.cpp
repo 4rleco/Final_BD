@@ -39,6 +39,10 @@ void main()
 
 	string user = "";
 	string password = "";
+	string userID = "";
+	string characterID = "";
+	string gameID = "";
+	string enterpriseID;
 
 	int status = 0;
 
@@ -167,7 +171,7 @@ void main()
 
 					while (row = mysql_fetch_row(res))
 					{
-						cout << "\nPeople Name: " << row[0] << ", people DNI: " << row[1] << endl;
+						cout << "\nPeople_name: " << row[0] << ", people_DNI: " << row[1] << endl;
 					}
 				}
 
@@ -249,7 +253,7 @@ void main()
 				printf("\n\n Insert the password: ");
 				cin >> password;
 
-				insertion = "insert into " + change + "(userName, userPassword) values('" + user + "', '" + password + "')";
+				insertion = "insert into " + change + "(user_name, user_password) values('" + user + "', '" + password + "')";
 			}
 
 			if (change == "People")
@@ -260,7 +264,17 @@ void main()
 				printf("\n\n Insert the DNI: ");
 				cin >> password;
 
-				insertion = "insert into " + change + "(peopleName, peopleDNI) values('" + user + "', '" + password + "')";
+				printf("\n\n Insert the user id: ");
+				cin >> userID;
+
+				printf("\n\n Insert the game id: ");
+				cin >> gameID;
+
+				printf("\n\n Insert the character id: ");
+				cin >> characterID;
+
+				insertion = "insert into " + change + "(people_name, people_DNI, id_user, id_game, id_character) values('"
+					+ user + "', '" + password + "', '" + userID +"' , '" + gameID + "', '" + characterID + "')";
 			}
 
 			if (change == "Games")
@@ -268,7 +282,10 @@ void main()
 				printf("\n\n Insert the name: ");
 				cin >> user;
 
-				insertion = "insert into " + change + "(gameName) values('" + user + "')";
+				printf("\n\n Insert the enterprise id: ");
+				cin >> enterpriseID;
+
+				insertion = "insert into " + change + "(game_name,id_enterprise) values('" + user + "', '" + enterpriseID + "')";
 			}
 
 			if (change == "Characters")
@@ -279,7 +296,7 @@ void main()
 				printf("\n\n Insert the skill: ");
 				cin >> password;
 
-				insertion = "insert into " + change + "(characterName, characterSkill) values('" + user + "', '" + password + "')";
+				insertion = "insert into " + change + "(character_name, character_skill) values('" + user + "', '" + password + "')";
 			}
 
 			if (change == "Enterprises")
@@ -287,7 +304,7 @@ void main()
 				printf("\n\n Insert the name: ");
 				cin >> user;
 
-				insertion = "insert into " + change + "(enterpriseName) values('" + user + "')";
+				insertion = "insert into " + change + "(enterprise_name) values('" + user + "')";
 			}
 
 			query = insertion.c_str();
@@ -317,17 +334,17 @@ void main()
 
 				if (change == "Users")
 				{
-					update = "update " + change + " set userPassword = '" + password + "' where userName = '" + user + "'";
+					update = "update " + change + " set user_password = '" + password + "' where user_name = '" + user + "'";
 				}
 
 				if (change == "People")
 				{
-					update = "update " + change + " set peopleDNI = '" + password + "' where peopleName = '" + user + "'";
+					update = "update " + change + " set people_DNI = '" + password + "' where people_name = '" + user + "'";
 				}
 
 				if (change == "Characters")
 				{
-					update = "update " + change + " set characterSkill = '" + password + "' where characterName = '" + user + "'";
+					update = "update " + change + " set character_skill = '" + password + "' where character_name = '" + user + "'";
 				}
 
 				query = update.c_str();
@@ -358,27 +375,27 @@ void main()
 
 			if (change == "Users")
 			{
-				eliminate = "delete from " + change + " where userName = '" + user + "'";
+				eliminate = "delete from " + change + " where user_name = '" + user + "'";
 			}
 
 			if (change == "People")
 			{
-				eliminate = "delete from " + change + " where peopleName = '" + user + "'";
+				eliminate = "delete from " + change + " where people_name = '" + user + "'";
 			}
 
 			if (change == "Games")
 			{
-				eliminate = "delete from " + change + " where gameName = '" + user + "'";
+				eliminate = "delete from " + change + " where game_name = '" + user + "'";
 			}
 
 			if (change == "Characters")
 			{
-				eliminate = "delete from " + change + " where characterName = '" + user + "'";
+				eliminate = "delete from " + change + " where character_name = '" + user + "'";
 			}
 
-			if (change == "Enterprise")
+			if (change == "Enterprises")
 			{
-				eliminate = "delete from " + change + " where enterpriseName = '" + user + "'";
+				eliminate = "delete from " + change + " where enterprise_name = '" + user + "'";
 			}
 
 			query = eliminate.c_str();
