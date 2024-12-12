@@ -171,7 +171,8 @@ void main()
 
 					while (row = mysql_fetch_row(res))
 					{
-						cout << "\nPeople_name: " << row[0] << ", people_DNI: " << row[1] << endl;
+						cout << "\nPeople_name: " << row[0] << ", people_DNI: " << row[1] << ", id_user: " << row[2] <<
+							", id_game: " << row[3] << ", id_character: " << row[4] << endl;
 					}
 				}
 
@@ -194,7 +195,7 @@ void main()
 
 					while (row = mysql_fetch_row(res))
 					{
-						cout << "\nGame Id: " << row[0] << ", game name: " << row[1] << endl;
+						cout << "\nGame Id: " << row[0] << ", game name: " << row[1] << ", id_enterprise: " << row[2] << endl;
 					}
 				}
 			}
